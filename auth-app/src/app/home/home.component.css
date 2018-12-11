@@ -1,0 +1,15 @@
+.jumbotron {
+    background-image: url('./../../assets/imgs/jumbo-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0px -100px;
+}
+
+.home-info {
+    width: 80%;
+}
+
+#palmers {
+    width: 100%;
+    height: auto;
+}
