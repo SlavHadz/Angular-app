@@ -18,4 +18,19 @@ router.get('/', (req, res) => {
     res.send('Send from API');
 });
 
+router.post('/register', (req, res) => {
+    let teamData = req.body;
+    let team = new Team(teamData);
+
+    team.save((error, registratedTeam) => {
+        if(error) {
+            console.log(error);
+        } else {
+            let payload = { subject: registratedTeam._id}
+            let token = jwt.sign(payload, 'secretKey');
+            res.status(200).send({token});
+        }
+    });
+})
+
 module.exports = router;

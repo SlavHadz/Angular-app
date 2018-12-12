@@ -7,7 +7,9 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { TeamsModule } from './teams/teams.module';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    TeamsModule
+    TeamsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
