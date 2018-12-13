@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { RulesComponent } from './rules/rules.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { AuthService } from './auth.service';
     NavigationComponent,
     HomeComponent,
     RegisterComponent,
+    RulesComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

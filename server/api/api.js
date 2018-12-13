@@ -33,4 +33,24 @@ router.post('/register', (req, res) => {
     });
 })
 
+router.post('/login', (req, res) => {
+    let teamData = req.body;
+    Team.findOne({teamName: teamData.teamName}, (error, team) => {
+        if(error) {
+            console.error(error);
+        } else {
+            if(!team) {
+                res.status(401).send('Invalid team name');
+            } else
+            if(team.password !== teamData.password) {
+                res.status(401).send('Invalid password');
+            } else {
+                let payload = {subject: team._id};
+                let token = jwt.sign(payload, 'secretKey');
+                res.status(200).send({token});
+            }
+        }
+    });
+});
+
 module.exports = router;

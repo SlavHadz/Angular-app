@@ -1,7 +1,7 @@
 <div class="container-fluid">
+  <h2 class="text-center text-primary text-uppercase">Register team</h2>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
-  {{registrationForm.value | json}}
     <div class="form-group">
       <label>Team name: </label>
       <input [class.is-invalid]="teamName.invalid && teamName.touched" type="text" formControlName="teamName" class="form-control">

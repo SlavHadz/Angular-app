@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.authService.registerTeam(this.registrationForm.value)
         .subscribe(
-          response => console.log('Success', response),
+          response => localStorage.setItem('token', response.token),
           error => console.error(error)
         );
   }
