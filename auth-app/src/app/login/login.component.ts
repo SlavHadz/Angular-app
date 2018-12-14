@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.token);
           this.router.navigate(['/teams']);
         },
-        error => console.error(error)
+        error => {
+          console.error(error);
+        }
       );
   }
 

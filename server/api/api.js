@@ -14,6 +14,25 @@ mongoose.connect(db, (err) => {
     }
 });
 
+function verifyToken(req, res, next) {
+    if(!req.headers.authorization) {
+        return res.status(401).send('Unauthorized request');
+    }
+
+    let token = req.headers.authorization.split(' ')[1];
+    if(token === 'null') {
+        return res.status(401).send('Unauthorized request');
+    }
+
+    let payload = jwt.verify(token, 'secretKey');
+    if(!payload) {
+        return res.status(401).send('Unauthorized request');
+    }
+
+    req.teamId = payload.subject;
+    next();
+}
+
 router.get('/', (req, res) => {
     res.send('Send from API');
 });
@@ -49,6 +68,17 @@ router.post('/login', (req, res) => {
                 let token = jwt.sign(payload, 'secretKey');
                 res.status(200).send({token});
             }
+        }
+    });
+});
+
+router.get('/teams', verifyToken, (req, res) => {
+    Team.find({}, (error, teams) => {
+        if(error) {
+            console.error(error);
+        } else {
+            console.log(teams);
+            res.status(200).send({teams});
         }
     });
 });
