@@ -1,8 +1,4 @@
 .main {
-    background-color: rgb(150, 150, 150);
-    opacity: 0.8;
-}
-
-.container {
-    opacity: 1;
+    background-color: rgba(200, 200, 200, 0.8);
+    min-height: 1000px;
 }
