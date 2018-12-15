@@ -1,4 +1,4 @@
-<div class="container bg-light">
+<div class="container">
   <h2 class="text-center text-primary text-uppercase">Register team</h2>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
@@ -19,7 +19,8 @@
     </div>
 
     <div formGroupName="captain">
-
+      <label class="text-uppercase">Team captain: </label>
+      <hr>
       <div class="form-group">
         <label>First Name: </label>
         <input [class.is-invalid]="firstName.invalid && firstName.touched" type="text" formControlName="firstName" class="form-control">
@@ -37,6 +38,7 @@
         <input [class.is-invalid]="age.invalid && age.touched" type="text" formControlName="age" class="form-control">
         <small *ngIf="age.invalid && age.touched" class="text-danger">Age is required</small>
       </div>
+      <hr>
     </div>
 
     <div class="form-group">

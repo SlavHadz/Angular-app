@@ -1,9 +1,10 @@
 <div class="main">
     <div class="container">
         <div class="text" *ngFor="let team of teams; index as i">
-          <h2>{{i + 1}}. Team: {{team.teamName}}</h2>
+          <h2><span class="badge badge-success">{{i + 1}}.</span> Team: {{team.teamName}}</h2>
           <h3>Captain: </h3><h4>{{team.captain.firstName}} {{team.captain.lastName}}</h4>
           <h4>Number of players: {{team.numberOfPlayers}}</h4>
+          <hr>
         </div>
     </div>
 </div>

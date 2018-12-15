@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService ) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router ) { }
 
   get teamName () {
     return this.registrationForm.get('teamName');
@@ -53,7 +55,10 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.authService.registerTeam(this.registrationForm.value)
         .subscribe(
-          response => localStorage.setItem('token', response.token),
+          response => {
+            localStorage.setItem('token', response.token);
+            this.router.navigate(['/teams']);
+        },
           error => console.error(error)
         );
   }
